@@ -1,5 +1,111 @@
-1. Data consists of Churned customers of a particular telecom company.
-2. There are no duplicates.
-3. 
+Properties:- 
+A. Data consists of Churned customers of a particular telecom company.
+B. There are no duplicates.
+C. There are no missing values except a few in 'TotalCharges' column. Missing values were filled with zero.
+D. Replacing "Yes" and "No" with 1 and 0 in "Churn" column.
+E. All are categorical columns except for "Tenure","TotalCharges" and "MonthlyCharges".
+
+Observations:-
+
+A. Almost Same type of gender division present, Less senior citizens, Almost same number of       customer between having partner/no partner, Majority of customers have dependents, have phone service,use fibre optic, are month-month subscribers,do paperlessbilling and prefer electronic check.
+B. Majority of customers dont have online security,dont use multple lines,dont have backup,dont  have device protection, streamingtv,streamingmovies and techsupport.
+C. Amongst Churned customers, more no. of them don't have partners.
+D. Churned customers prefered fibre optic as compared to others.
+E. Churned customer used electronic check more than retained customers as they have equal mode of payment types. 
+F. Maximum of Churned customers were month-to-month subscribers.
+G. Customers paying more "total_charges" have low churn rate.
+
+Models to predict whether customer will churn or not:-
+Objective:- Increase recall score i.e. extract out as many churned customers as possible.
+
+Baseline Model:-
+
+A. Catboost Baseline Model:- 
+    I. Dataset split into training and test dataset using stratified based splitting and test   dataset is around 33% of training dataset.
+    II. Numerical columns scaled using standard scaler.
+    III. Trained using catboost classifier with 1000 iterations.
+    IV. 5 fold stratified cross validation used for training.
+    V. Recall score = 0.61 on test dataset. 
+B. XGBoost Baseline Model:-
+    I. Categorical columns converted into numerical columns via one-hot encoding.
+    II. Dataset split into training and test dataset using stratified based splitting and test   dataset is around 33% of training dataset.
+    III. Numerical columns scaled using standard scaler.
+    IV. Trained using xgboost classifier with 1000 estimators.
+    V. 5 fold stratified cross validation used for training.
+    VI. Recall score = 0.66 on test dataset.
+C. AdaBoost Baseline Model:-
+    I. Categorical columns converted into numerical columns via one-hot encoding.
+    II. Dataset split into training and test dataset using stratified based splitting and test   dataset is around 33% of training dataset.
+    III. Numerical columns scaled using standard scaler.
+    IV. Trained using adaboost classifier with 1000 estimators.
+    V. 5 fold stratified cross validation used for training.
+    VI. Recall score = 0.66 on test dataset.
+    
+XGboost and Adaboost performed equally well.
+
+Feature engineered Model:-
+
+A. AdaBoost Feature engineered Model:-
+    I. Categorical columns converted into numerical columns via one-hot encoding.
+    II. Polynomial features of degree 3 calculated using original numerical columns.
+    III. Dataset split into training and test dataset using stratified based splitting and test   dataset is around 33% of training dataset.
+    IV. Numerical columns scaled using standard scaler.
+    V. Trained using adaboost classifier with 1000 estimators.
+    VI. 5 fold stratified cross validation used for training.
+    VII. Recall score = 0.65 on test dataset.
+
+B. XGBoost Feature engineered Model:-
+    I. Categorical columns converted into numerical columns via one-hot encoding.
+    II. Polynomial features of degree 3 calculated using original numerical columns.
+    III. Dataset split into training and test dataset using stratified based splitting and test   dataset is around 33% of training dataset.
+    IV. Numerical columns scaled using standard scaler.
+    V. Trained using xgboost classifier with 1000 estimators.
+    VI. 5 fold stratified cross validation used for training.
+    VII. Recall score = 0.67 on test dataset.
+    
+XGBoost performance improved but adaboost's performance declined.
+
+Feature selection:-
+
+A. AdaBoost Model with engineered features and 6 best features:-
+    I. Categorical columns converted into numerical columns via one-hot encoding.
+    II. Polynomial features of degree 3 calculated using original numerical columns.
+    III. Forward feature selection to using random forest classifier to select 6 best features.
+    IV. Dataset split into training and test dataset using stratified based splitting and test   dataset is around 33% of training dataset.
+    V. Numerical columns scaled using standard scaler.
+    VI. Trained using adaboost classifier with 1000 estimators.
+    VII. 5 fold stratified cross validation used for training.
+    VIII. Recall score = 0.53 on test dataset.
+
+B. XGBoost Model with engineered features and 6 best features:-
+    I. Categorical columns converted into numerical columns via one-hot encoding.
+    II. Polynomial features of degree 3 calculated using original numerical columns.
+    III. Forward feature selection to using random forest classifier to select 6 best features.
+    IV. Dataset split into training and test dataset using stratified based splitting and test   dataset is around 33% of training dataset.
+    V. Numerical columns scaled using standard scaler.
+    VI. Trained using XGBoost classifier with 1000 estimators.
+    VII. 5 fold stratified cross validation used for training.
+    VIII. Recall score = 0.54 on test dataset.
+
+Upper limit of 6 features reduced the model performance considerably.
+
+Hyperparameter Tuning using Optuna:-
+
+A. XGBoost Tuned Model:-
+    I. Categorical columns converted into numerical columns via one-hot encoding.
+    II. Polynomial features of degree 3 calculated using original numerical columns.
+    III. Dataset split into training and test dataset using stratified based splitting and test   dataset is around 33% of training dataset.
+    IV. Numerical columns scaled using standard scaler.
+    V. XGBoost parameters tuned via optuna in order to maximize Recall score.
+    VI. Tuned model gave recall of 0.76
+    
+    
+ Important Note:- XGBoost gave highest recall score after feature engineering and hyperparameter tuning.
 
 
+
+
+
+
+
+    
