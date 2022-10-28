@@ -16,7 +16,7 @@ F. Maximum of Churned customers were month-to-month subscribers.
 G. Customers paying more "total_charges" have low churn rate.
 
 Models to predict whether customer will churn or not:-
-Objective:- Increase recall score i.e. extract out as many churned customers as possible.
+OBJECTIVE:- Increase recall score i.e. extract out as many churned customers as possible.
 
 Baseline Model:-
 
@@ -41,7 +41,7 @@ C. AdaBoost Baseline Model:-
     V. 5 fold stratified cross validation used for training.
     VI. Recall score = 0.66 on test dataset.
     
-XGboost and Adaboost performed equally well.
+IMPORTANT NOTE:- XGboost and Adaboost performed equally well.
 
 Feature engineered Model:-
 
@@ -63,7 +63,7 @@ B. XGBoost Feature engineered Model:-
     VI. 5 fold stratified cross validation used for training.
     VII. Recall score = 0.67 on test dataset.
     
-XGBoost performance improved but adaboost's performance declined.
+IMPORTANT NOTE:- XGBoost performance improved but adaboost's performance declined.
 
 Feature selection:-
 
@@ -87,7 +87,7 @@ B. XGBoost Model with engineered features and 6 best features:-
     VII. 5 fold stratified cross validation used for training.
     VIII. Recall score = 0.54 on test dataset.
 
-Upper limit of 6 features reduced the model performance considerably.
+IMPORTANT NOTE:- Upper limit of 6 features reduced the model performance considerably.
 
 Hyperparameter Tuning using Optuna:-
 
@@ -99,8 +99,8 @@ A. XGBoost Tuned Model:-
     V. XGBoost parameters tuned via optuna in order to maximize Recall score.
     VI. Tuned model gave recall of 0.76
     
-    
- Important Note:- XGBoost gave highest recall score after feature engineering and hyperparameter tuning.
+
+IMPORTANT NOTE:- XGBoost gave highest recall score after feature engineering and hyperparameter tuning.
 
 
 
