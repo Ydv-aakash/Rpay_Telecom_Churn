@@ -1,1 +1,5 @@
-Telecom case study
+1. Data consists of Churned customers of a particular telecom company.
+2. There are no duplicates.
+3. 
+
+
